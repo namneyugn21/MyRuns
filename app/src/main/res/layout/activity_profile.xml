@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/prussian_blue"
+            android:paddingTop="25dp"
+            android:paddingBottom="15dp">
+
+            <ImageView
+                android:id="@+id/profile_photo_imageView"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:contentDescription="@string/contentDescription"
+                android:src="@drawable/default_profile_avatar"
+                android:background="@drawable/circle_image_background"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="@string/changeButton"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="25dp">
+            <!--Name-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/name_textView"
+                android:text="@string/name"
+                style="@style/FormLabel"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/name_editText"
+                android:hint="@string/hint_name"
+                android:inputType="textPersonName"
+                android:autofillHints="name"
+                style="@style/RoundedInputField"/>
+
+            <!--Email address-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/email_textView"
+                android:text="@string/email"
+                android:layout_marginTop="15dp"
+                style="@style/FormLabel"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/email_editText"
+                android:hint="@string/hint_email"
+                android:inputType="textEmailAddress"
+                android:autofillHints="emailAddress"
+                style="@style/RoundedInputField"/>
+
+            <!--Phone number-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/phone_textView"
+                android:text="@string/phone"
+                android:layout_marginTop="15dp"
+                style="@style/FormLabel"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/phone_editText"
+                android:hint="@string/hint_phone"
+                android:inputType="phone"
+                android:autofillHints="phone"
+                style="@style/RoundedInputField"/>
+
+            <!--Gender-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/gender_textView"
+                android:text="@string/gender"
+                android:layout_marginTop="15dp"
+                style="@style/FormLabel" />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/male_radioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/male" />
+
+                <RadioButton
+                    android:id="@+id/female_radioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/female" />
+            </RadioGroup>
+
+            <!--Class-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/class_textView"
+                android:text="@string/classOf"
+                android:layout_marginTop="15dp"
+                style="@style/FormLabel"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/class_editText"
+                android:hint="@string/hint_class"
+                android:inputType="number"
+                android:importantForAutofill="no"
+                style="@style/RoundedInputField"/>
+
+            <!--Major-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/major_textView"
+                android:text="@string/major"
+                android:layout_marginTop="15dp"
+                style="@style/FormLabel"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/major_editText"
+                android:hint="@string/hint_major"
+                android:inputType="text"
+                android:importantForAutofill="no"
+                style="@style/RoundedInputField"/>
+
+            <!--Buttons-->
+            <LinearLayout
+                style="?android:attr/buttonBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp">
+
+                <Button
+                    android:id="@+id/save_button"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/save"
+                    android:backgroundTint="@color/prussian_blue"
+                    android:textColor="@color/white"/>
+
+                <Button
+                    android:id="@+id/cancel_button"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cancel"
+                    android:backgroundTint="@color/gray"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,26 @@
+# IDE files and directories
+*.iml
+.gradle
+/local.properties
+/.idea/
+.DS_Store
+
+# Build output
+/build
+/captures
+
+# C/C++ native build files
+.cxx/
+.externalNativeBuild/
+
+# Secrets (API keys, etc.)
+secrets.properties
+
+# Keystore files
+*.jks
+*.keystore
+
+google-services.json
+
+# Crashlytics files
+**/com.crashlytics.android.core.CrashlyticsNdkData

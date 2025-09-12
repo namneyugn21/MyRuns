@@ -2,7 +2,7 @@
     <string name="app_name">MyRuns</string>
     <string name="profile_photo">Profile photo</string>
     <string name="contentDescription">Profile photo</string>
-    <string name="changeButton">Change</string>
+    <string name="changeButton">Change your profile photo</string>
     <string name="name">Name</string>
     <string name="hint_name">Enter your name</string>
     <string name="email">Email</string>

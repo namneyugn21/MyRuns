@@ -16,23 +16,26 @@
             android:orientation="vertical"
             android:background="@color/prussian_blue"
             android:paddingTop="25dp"
-            android:paddingBottom="15dp">
+            android:paddingBottom="10dp">
 
-            <ImageView
+<!--        Source: https://github.com/hdodenhof/CircleImageView-->
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profile_photo_imageView"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:contentDescription="@string/contentDescription"
                 android:src="@drawable/default_profile_avatar"
-                android:background="@drawable/circle_image_background"/>
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/prussian_blue"/>
 
             <Button
+                android:id="@+id/profile_photo_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="@color/prussian_blue"
                 android:text="@string/changeButton"
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp"/>
+                android:textColor="@color/white"/>
         </LinearLayout>
 
         <LinearLayout
@@ -101,7 +104,8 @@
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:id="@+id/gender_radioGroup">
                 <RadioButton
                     android:id="@+id/male_radioButton"
                     android:layout_width="0dp"

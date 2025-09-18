@@ -2,19 +2,28 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/prussian_blue"
+            app:title="@string/app_name"
+            app:titleTextColor="@color/white"
+            android:theme="@style/ThemeOverlay.Material3.ActionBar" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            android:background="@color/prussian_blue"
+            android:background="@color/light_blue"
             android:paddingTop="25dp"
             android:paddingBottom="10dp">
 
@@ -26,16 +35,17 @@
                 android:layout_height="100dp"
                 android:contentDescription="@string/contentDescription"
                 android:src="@drawable/default_profile_avatar"
-                app:civ_border_width="2dp"
+                app:civ_border_width="0dp"
                 app:civ_border_color="@color/prussian_blue"/>
 
             <Button
                 android:id="@+id/profile_photo_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/prussian_blue"
+                android:backgroundTint="@color/light_blue"
                 android:text="@string/changeButton"
-                android:textColor="@color/white"/>
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"/>
         </LinearLayout>
 
         <LinearLayout
@@ -119,6 +129,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/female" />
+
+                <RadioButton
+                    android:id="@+id/other_radioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/other" />
             </RadioGroup>
 
             <!--Class-->

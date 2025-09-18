@@ -12,10 +12,12 @@
     <string name="gender">Gender</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
+    <string name="other">Other</string>
     <string name="classOf">Class</string>
     <string name="hint_class">Enter your class (e.g. 2026)</string>
     <string name="major">Major</string>
     <string name="hint_major">Enter your major</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>"
+    <string name="settings">Settings</string>
 </resources>

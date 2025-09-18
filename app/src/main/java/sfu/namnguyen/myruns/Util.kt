@@ -1,3 +1,4 @@
+// Reference: XD Lecture code snippet
 package sfu.namnguyen.myruns
 
 import android.Manifest

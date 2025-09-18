@@ -3,7 +3,13 @@
     <style name="Base.Theme.MyRuns" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/prussian_blue</item>
+        <item name="colorOnPrimary">@color/white</item>
         <item name="android:windowBackground">@color/white</item>
+        <item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
+    </style>
+
+    <style name="OverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">@color/white</item>
     </style>
 
     <style name="Theme.MyRuns" parent="Base.Theme.MyRuns" />

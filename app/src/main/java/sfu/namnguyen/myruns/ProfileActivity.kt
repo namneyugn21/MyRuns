@@ -4,6 +4,8 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -13,6 +15,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
 import java.io.File
@@ -26,7 +29,7 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var myViewModel: MyViewModel
     private lateinit var cameraResult: ActivityResultLauncher<Intent>
 
-    // variables to store user info
+    // variables to store form input fields
     private lateinit var nameEditText: EditText
     private lateinit var emailEditText: EditText
     private lateinit var phoneEditText: EditText
@@ -51,6 +54,9 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         // initialize variables
         imageView = findViewById(R.id.profile_photo_imageView)
@@ -100,7 +106,6 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun saveProfile() {
         getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit {
-
             putString(KEY_NAME, nameEditText.text.toString())
             putString(KEY_EMAIL, emailEditText.text.toString())
             putString(KEY_PHONE, phoneEditText.text.toString())
@@ -110,7 +115,6 @@ class ProfileActivity : AppCompatActivity() {
             putInt(KEY_CLASS, classYear)
 
             putInt(KEY_GENDER, genderRadioGroup.checkedRadioButtonId)
-
         }
 
         Toast.makeText(this, "Profile Saved", Toast.LENGTH_SHORT).show()
@@ -146,5 +150,21 @@ class ProfileActivity : AppCompatActivity() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         intent.putExtra(MediaStore.EXTRA_OUTPUT, tempImgUri)
         cameraResult.launch(intent)
+    }
+
+    // Reference: https://developer.android.com/guide/fragments/appbar
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here.
+        return when (item.itemId) {
+            R.id.action_settings -> {
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

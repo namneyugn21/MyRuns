@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingVertical="15dp"
+    android:paddingHorizontal="20dp">
+
+    <TextView
+        style="@style/FormLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/input_type"
+        android:paddingBottom="5dp"/>
+
+    <!-- The styling for the input boxes is referenced from the below GitHub docs, with a little modification by Nam Nguyen-->
+    <!-- https://github.com/material-components/material-components-android/blob/master/docs/components/Menu.md#exposed-dropdown-menu-example-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_input_type">
+
+        <AutoCompleteTextView
+            android:id="@+id/exposed_dropdown_input_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:autofillHints="none"
+            android:labelFor="@id/exposed_dropdown_input_type"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        style="@style/FormLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/activity_type"
+        android:paddingBottom="5dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_activity_type">
+
+        <AutoCompleteTextView
+            android:id="@+id/exposed_dropdown_activity_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:autofillHints="none"
+            android:labelFor="@id/exposed_dropdown_activity_type"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/start" />
+
+</LinearLayout>

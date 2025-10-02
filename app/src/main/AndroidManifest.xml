@@ -13,15 +13,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyRuns">
+
         <activity
-            android:name=".ProfileActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ProfileActivity" android:exported="true"/>
+        <activity android:name=".ManualEntryActivity" android:exported="false"/>
+        <activity android:name=".MapActivity" android:exported="false"/>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="sfu.namnguyen.myruns"

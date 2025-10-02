@@ -20,4 +20,30 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>"
     <string name="settings">Settings</string>
+    <string name="start">Start</string>
+    <string name="input_type">Input type</string>
+    <string name="activity_type">Activity type</string>
+    <string name="hint_input_type">Select input type</string>
+    <string name="hint_activity_type">Select activity type</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="duration">Duration</string>
+    <string name="distance">Distance</string>
+    <string name="calories">Calories</string>
+    <string name="heart_rate">Heart rate</string>
+    <string name="comment">Comment (Optional)</string>
+    <string name="pick_a_date">Pick a date</string>
+    <string name="pick_a_time">Pick a time</string>
+    <string name="enter_here">Enter here</string>
+    <string name="time_amp_date"><![CDATA[TIME & DATE]]></string>
+    <string name="activity_details">ACTIVITY DETAILS</string>
+    <string-array name="unit_entries">
+        <item>Metric (Kilometers)</item>
+        <item>Imperial (Miles)</item>
+    </string-array>
+
+    <string-array name="unit_values">
+        <item>metric</item>
+        <item>imperial</item>
+    </string-array>
 </resources>

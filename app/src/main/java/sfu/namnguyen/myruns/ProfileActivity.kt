@@ -1,5 +1,6 @@
 package sfu.namnguyen.myruns
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -28,6 +29,7 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var tempImgUri: Uri
     private lateinit var myViewModel: MyViewModel
     private lateinit var cameraResult: ActivityResultLauncher<Intent>
+    private lateinit var galleryResult: ActivityResultLauncher<Intent>
 
     // variables to store form input fields
     private lateinit var nameEditText: EditText
@@ -71,11 +73,11 @@ class ProfileActivity : AppCompatActivity() {
         loadProfile()
 
         // set up camera
-        setCamera()
+        setImageSelection()
 
         // set up button
         button = findViewById(R.id.profile_photo_button)
-        button.setOnClickListener { takePhoto() }
+        button.setOnClickListener { showPhotoSelectionDialog() }
 
         saveButton = findViewById(R.id.save_button)
         saveButton.setOnClickListener { saveProfile() }
@@ -105,22 +107,39 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun saveProfile() {
+        // Validation Check
+        if (nameEditText.text.isNullOrBlank() ||
+            emailEditText.text.isNullOrBlank() ||
+            phoneEditText.text.isNullOrBlank() ||
+            classEditText.text.isNullOrBlank() ||
+            majorEditText.text.isNullOrBlank() ||
+            genderRadioGroup.checkedRadioButtonId == -1
+        ) {
+            Toast.makeText(this, "Please fill in all profile fields.", Toast.LENGTH_LONG).show()
+            return
+        }
+
+        val classYear = classEditText.text.toString().toIntOrNull()
+        if (classYear == null || classYear < 1900 || classYear > 2100) {
+            Toast.makeText(this, "Please enter a valid class year.", Toast.LENGTH_LONG).show()
+            return
+        }
+
         getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit {
             putString(KEY_NAME, nameEditText.text.toString())
             putString(KEY_EMAIL, emailEditText.text.toString())
             putString(KEY_PHONE, phoneEditText.text.toString())
             putString(KEY_MAJOR, majorEditText.text.toString())
-
-            val classYear = classEditText.text.toString().toIntOrNull() ?: -1
             putInt(KEY_CLASS, classYear)
-
             putInt(KEY_GENDER, genderRadioGroup.checkedRadioButtonId)
         }
 
         Toast.makeText(this, "Profile Saved", Toast.LENGTH_SHORT).show()
+
+        finish()
     }
 
-    private fun setCamera() {
+    private fun setImageSelection() {
         Util.checkPermissions(this)
 
         myViewModel = ViewModelProvider(this)[MyViewModel::class.java]
@@ -136,6 +155,23 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
+        galleryResult = registerForActivityResult(StartActivityForResult())
+        { result: ActivityResult ->
+            if (result.resultCode == RESULT_OK) {
+                val selectedImageUri = result.data?.data
+                if (selectedImageUri != null) {
+                    contentResolver.openInputStream(selectedImageUri)?.use { inputStream ->
+                        contentResolver.openOutputStream(tempImgUri)?.use { outputStream ->
+                            inputStream.copyTo(outputStream)
+                        }
+                    }
+
+                    val bitmap = Util.getBitmap(this, tempImgUri)
+                    myViewModel.userImage.value = bitmap
+                }
+            }
+        }
+
         myViewModel.userImage.observe(this) { it ->
             imageView.setImageBitmap(it)
         }
@@ -146,10 +182,29 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun takePhoto() {
+    private fun launchCameraIntent() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         intent.putExtra(MediaStore.EXTRA_OUTPUT, tempImgUri)
         cameraResult.launch(intent)
+    }
+
+    private fun launchGalleryIntent() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        galleryResult.launch(intent)
+    }
+
+    private fun showPhotoSelectionDialog() {
+        val options = arrayOf("Take Photo", "Choose from Gallery")
+        val builder = androidx.appcompat.app.AlertDialog.Builder(this)
+        builder.setTitle("Change Profile Photo")
+        builder.setItems(options) { dialog: DialogInterface, which: Int ->
+            when (which) {
+                0 -> launchCameraIntent()
+                1 -> launchGalleryIntent()
+            }
+            dialog.dismiss()
+        }
+        builder.show()
     }
 
     // Reference: https://developer.android.com/guide/fragments/appbar

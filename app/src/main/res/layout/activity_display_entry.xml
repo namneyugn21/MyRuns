@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1">
+
+            <TableRow android:paddingBottom="10dp">
+                <TextView
+                    android:text="Input Type:"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:paddingEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tv_input_type"
+                    android:layout_width="wrap_content"
+                    />
+            </TableRow>
+
+            <TableRow android:paddingBottom="10dp">
+                <TextView
+                    android:text="Activity Type:"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:paddingEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tv_activity_type"
+                    android:layout_width="wrap_content"
+                    />
+            </TableRow>
+
+            <TableRow android:paddingBottom="10dp">
+                <TextView android:text="Date and time:"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:paddingEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tv_date_time"
+                    android:layout_width="wrap_content"
+                    />
+            </TableRow>
+
+            <TableRow android:paddingBottom="10dp">
+                <TextView android:text="Duration:"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:paddingEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tv_duration"
+                    android:layout_width="wrap_content"
+                    />
+            </TableRow>
+
+            <TableRow android:paddingBottom="10dp">
+                <TextView
+                    android:text="Distance:"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:paddingEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tv_distance"
+                    android:layout_width="wrap_content"
+                    />
+            </TableRow>
+
+            <TableRow android:paddingBottom="10dp">
+                <TextView
+                    android:text="Average Pace:"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:paddingEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tv_avg_pace"
+                    android:layout_width="wrap_content"
+                    />
+            </TableRow>
+
+            <TableRow android:paddingBottom="10dp">
+                <TextView
+                    android:text="Average Speed:"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:paddingEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tv_avg_speed"
+                    android:layout_width="wrap_content"
+                    />
+            </TableRow>
+
+            <TableRow android:paddingBottom="10dp">
+                <TextView
+                    android:text="Climb:"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:paddingEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tv_climb"
+                    android:layout_width="wrap_content" />
+            </TableRow>
+
+            <TableRow android:paddingBottom="10dp">
+                <TextView android:text="Calories:"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:paddingEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tv_calories"
+                    android:layout_width="wrap_content"
+                    />
+            </TableRow>
+
+            <TableRow android:paddingBottom="10dp">
+                <TextView
+                    android:text="Heart Rate:"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:paddingEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tv_heart_rate"
+                    android:layout_width="wrap_content"
+                    />
+            </TableRow>
+
+            <TableRow android:paddingBottom="10dp">
+                <TextView
+                    android:text="Comments:"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:paddingEnd="16dp"/>
+                <TextView
+                    android:id="@+id/tv_comment"
+                    android:layout_width="0dp"
+                    />
+            </TableRow>
+
+        </TableLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delete"
+        android:backgroundTint="@color/design_default_color_error"
+        android:layout_margin="16dp"/>
+</LinearLayout>

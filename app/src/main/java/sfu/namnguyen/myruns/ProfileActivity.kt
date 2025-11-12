@@ -40,8 +40,8 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var majorEditText: EditText
     private lateinit var saveButton: Button
     private lateinit var cancelButton: Button
-
     private val tempImgFileName = "temporary_image.jpg"
+    private val profileImgFileName = "profile_image.jpg"
 
     companion object {
         private const val PREFS_NAME = "MyRunsProfilePref"
@@ -73,7 +73,7 @@ class ProfileActivity : AppCompatActivity() {
         loadProfile()
 
         // set up camera
-        setImageSelection()
+        setImageSelection(savedInstanceState)
 
         // set up button
         button = findViewById(R.id.profile_photo_button)
@@ -83,7 +83,13 @@ class ProfileActivity : AppCompatActivity() {
         saveButton.setOnClickListener { saveProfile() }
 
         cancelButton = findViewById(R.id.cancel_button)
-        cancelButton.setOnClickListener { finish() }
+        cancelButton.setOnClickListener {
+            val tempImgFile = File(getExternalFilesDir(null), tempImgFileName)
+            if (tempImgFile.exists()) {
+                tempImgFile.delete()
+            }
+            finish()
+        }
     }
 
     private fun loadProfile() {
@@ -107,7 +113,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun saveProfile() {
-        // Validation Check
+        // validation Check
         if (nameEditText.text.isNullOrBlank() ||
             emailEditText.text.isNullOrBlank() ||
             phoneEditText.text.isNullOrBlank() ||
@@ -125,6 +131,14 @@ class ProfileActivity : AppCompatActivity() {
             return
         }
 
+        val tempImgFile = File(getExternalFilesDir(null), tempImgFileName)
+        val permanentImgFile = File(getExternalFilesDir(null), profileImgFileName)
+
+        if (tempImgFile.exists()) {
+            tempImgFile.copyTo(permanentImgFile, overwrite = true)
+            tempImgFile.delete()
+        }
+
         getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit {
             putString(KEY_NAME, nameEditText.text.toString())
             putString(KEY_EMAIL, emailEditText.text.toString())
@@ -139,7 +153,7 @@ class ProfileActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun setImageSelection() {
+    private fun setImageSelection(savedInstanceState: Bundle?) {
         Util.checkPermissions(this)
 
         myViewModel = ViewModelProvider(this)[MyViewModel::class.java]
@@ -176,9 +190,19 @@ class ProfileActivity : AppCompatActivity() {
             imageView.setImageBitmap(it)
         }
 
+        val permanentImgFile = File(getExternalFilesDir(null), profileImgFileName)
+
+        if (savedInstanceState == null && tempImgFile.exists()) {
+            tempImgFile.delete()
+        }
+
         if (tempImgFile.exists()) {
             val bitmap = Util.getBitmap(this, tempImgUri)
             imageView.setImageBitmap(bitmap)
+        } else if (permanentImgFile.exists()) {
+            permanentImgFile.copyTo(tempImgFile, overwrite = true)
+            val bitmap = Util.getBitmap(this, tempImgUri)
+            myViewModel.userImage.value = bitmap
         }
     }
 

@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/prussian_blue"
-            app:title="@string/app_name"
+            app:title="MyRuns"
             app:titleTextColor="@color/white"
             android:theme="@style/ThemeOverlay.Material3.ActionBar" />
 

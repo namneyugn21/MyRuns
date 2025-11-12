@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyRuns</string>
+    <string name="app_name">Nam_Nguyen_MyRuns</string>
     <string name="profile_photo">Profile photo</string>
     <string name="contentDescription">Profile photo</string>
     <string name="changeButton">Change your profile photo</string>
@@ -37,6 +37,11 @@
     <string name="enter_here">Enter here</string>
     <string name="time_amp_date"><![CDATA[TIME & DATE]]></string>
     <string name="activity_details">ACTIVITY DETAILS</string>
+    <string name="delete">Delete</string>
+    <string name="input_type_header">Input Type:</string>
+    <string name="activity_type_header">Activity Type:</string>
+    <string name="duration_header">Duration:</string>
+    <string name="comments_header">Comments:</string>
     <string-array name="unit_entries">
         <item>Metric (Kilometers)</item>
         <item>Imperial (Miles)</item>

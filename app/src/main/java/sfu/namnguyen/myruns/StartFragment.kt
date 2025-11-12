@@ -17,6 +17,11 @@ class StartFragment : Fragment() {
     private val inputTypes = arrayOf("Manual Entry", "GPS", "Automatic")
     private val activityTypes = arrayOf("Running", "Walking", "Standing", "Cycling", "Hiking", "Downhill Skiing", "Cross-Country Skiing", "Snowboarding", "Skating", "Swimming", "Mountain Biking", "Wheelchair", "Elliptical", "Other")
 
+    companion object {
+        const val INPUT_TYPE_KEY = "input_type"
+        const val ACTIVITY_TYPE_KEY = "activity_type"
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_start, container, false)
 
@@ -39,18 +44,23 @@ class StartFragment : Fragment() {
         startButton = view.findViewById(R.id.button_start)
         startButton.setOnClickListener {
             val inputType = spinnerInput.text.toString()
-            val intent: Intent
+            val activityType = spinnerActivity.text.toString()
 
-            when(inputType) {
+            val intent: Intent = when(inputType) {
                 "Manual Entry" -> {
-                    intent = Intent(requireContext(), ManualEntryActivity::class.java)
-                    startActivity(intent)
+                    Intent(requireContext(), ManualEntryActivity::class.java)
                 }
+
                 "GPS", "Automatic" -> {
-                    intent = Intent(requireContext(), MapActivity::class.java)
-                    startActivity(intent)
+                    Intent(requireContext(), MapActivity::class.java)
                 }
+
+                else -> return@setOnClickListener
             }
+
+            intent.putExtra(INPUT_TYPE_KEY, inputType)
+            intent.putExtra(ACTIVITY_TYPE_KEY, activityType)
+            startActivity(intent)
         }
 
         return view

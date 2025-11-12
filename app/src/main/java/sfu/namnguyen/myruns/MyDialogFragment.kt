@@ -13,6 +13,7 @@ class MyDialogFragment : DialogFragment() {
     }
     companion object {
         const val DIALOG_KEY = "dialog_key"
+        const val IS_METRIC_KEY = "is_metric_key"
         const val DURATION_DIALOG = 0
         const val DISTANCE_DIALOG = 1
         const val CALORIES_DIALOG = 2
@@ -34,11 +35,12 @@ class MyDialogFragment : DialogFragment() {
             }
             DISTANCE_DIALOG -> {
                 dialogTitle = "Distance"
-                inputUnit = "km"
+                val isMetric = arguments?.getBoolean(IS_METRIC_KEY) ?: false
+                inputUnit = if (isMetric) "km" else "miles"
             }
             CALORIES_DIALOG -> {
                 dialogTitle = "Calories"
-                inputUnit = "kcal"
+                inputUnit = "cals"
             }
             HEART_RATE_DIALOG -> {
                 dialogTitle = "Heart Rate"
@@ -63,6 +65,8 @@ class MyDialogFragment : DialogFragment() {
 
         if (dialogKey == COMMENT_DIALOG) {
             editText.hint = "Enter your comment here"
+        } else if (inputUnit.isNotEmpty()) {
+            editText.hint = "Enter value in $inputUnit"
         }
 
         builder.setView(dialogView)

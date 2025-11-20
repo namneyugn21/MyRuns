@@ -16,6 +16,10 @@ class ExerciseEntryViewModel(private val repository: ExerciseEntryRepository) : 
         repository.deleteEntry(entry)
     }
 
+    fun deleteAllEntries() {
+        repository.deleteAllEntries()
+    }
+
     fun getEntryById(entryId: Long, callback: (ExerciseEntry?) -> Unit) {
         repository.getEntryById(entryId, callback)
     }

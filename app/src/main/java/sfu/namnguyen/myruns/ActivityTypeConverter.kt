@@ -30,4 +30,13 @@ object ActivityTypeConverter {
             else -> "Unknown"
         }
     }
+
+    fun getInputTypeInt(inputName: String): Int {
+        return when(inputName) {
+            "Manual Entry" -> 0
+            "GPS" -> 1
+            "Automatic" -> 2
+            else -> 0
+        }
+    }
 }

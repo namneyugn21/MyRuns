@@ -52,7 +52,7 @@ class StartFragment : Fragment() {
                 }
 
                 "GPS", "Automatic" -> {
-                    Intent(requireContext(), MapActivity::class.java)
+                    Intent(requireContext(), MapDisplayActivity::class.java)
                 }
 
                 else -> return@setOnClickListener

@@ -1,6 +1,7 @@
 package sfu.namnguyen.myruns
 
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -24,6 +25,12 @@ class ExerciseEntryRepository(private val dao: ExerciseEntryDao) {
         CoroutineScope(IO).launch {
             val entry = dao.getEntryById(entryId)
             callback(entry)
+        }
+    }
+
+    fun deleteAllEntries() {
+        CoroutineScope(IO).launch {
+            dao.deleteAllEntries()
         }
     }
 }

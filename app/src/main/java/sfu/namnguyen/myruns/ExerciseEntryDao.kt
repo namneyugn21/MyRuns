@@ -17,6 +17,10 @@ interface ExerciseEntryDao {
     @Delete
     suspend fun deleteEntry(exerciseEntry: ExerciseEntry)
 
+    // delete all entry
+    @Query("DELETE FROM exercise_entries_table")
+    fun deleteAllEntries()
+
     // get an exercise entry by its ID
     @Query("SELECT * FROM exercise_entries_table WHERE id = :key")
     suspend fun getEntryById(key: Long): ExerciseEntry?

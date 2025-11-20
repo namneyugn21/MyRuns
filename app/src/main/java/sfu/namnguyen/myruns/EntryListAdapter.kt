@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-class EntryListAdapter(private val clickListener: (Long) -> Unit) :
+class EntryListAdapter(private val clickListener: (ExerciseEntry) -> Unit) :
     ListAdapter<ExerciseEntry, EntryListAdapter.EntryViewHolder>(EntryDiff) {
         var isMetric = false
 
@@ -23,7 +23,7 @@ class EntryListAdapter(private val clickListener: (Long) -> Unit) :
         holder.bind(entry, isMetric)
 
         holder.itemView.setOnClickListener {
-            clickListener(entry.id) // pass the ID of the clicked entry
+            clickListener(entry)
         }
     }
 

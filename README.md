@@ -33,9 +33,9 @@ MVVM throughout.
 
 ## Screenshots
 
-| Start | History | Profile |
-|---|---|---|
-| _placeholder_ | _placeholder_ | _placeholder_ |
+| Start | Settings | Profile |
+| :---: | :---: | :---: |
+| ![Start](screenshots/start.png) | ![Settings](screenshots/settings.png) | ![Profile](screenshots/profile.png) |
 
 ## Setup
 

@@ -54,5 +54,3 @@ Needs Android Studio Ladybug or newer, SDK 35.
 ## Author
 
 Nam Nguyen
-
-Built for an Android development course.

@@ -15,6 +15,7 @@ import android.location.LocationManager
 import android.os.Binder
 import android.os.Build
 import android.os.IBinder
+import android.content.pm.ServiceInfo
 import androidx.core.app.NotificationCompat
 import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.maps.model.LatLng
@@ -87,7 +88,12 @@ class TrackingService : Service(), LocationListener, SensorEventListener {
             .setContentIntent(pendingIntent)
             .setOnlyAlertOnce(true)
             .build()
-        startForeground(NOTIFICATION_ID, notification)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            startForeground(NOTIFICATION_ID, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION)
+        } else {
+            startForeground(NOTIFICATION_ID, notification)
+        }
 
         try {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0f, this)

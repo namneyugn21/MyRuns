@@ -57,10 +57,7 @@ class DisplayEntryActivity : AppCompatActivity() {
         val viewModelFactory = ExerciseEntryViewModelFactory(repository)
         exerciseEntryViewModel = ViewModelProvider(this, viewModelFactory)[ExerciseEntryViewModel::class.java]
 
-        val sharedPrefs = getSharedPreferences(
-            "androidx.preference_preferences",
-            MODE_PRIVATE
-        )
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         val unitValue = sharedPrefs.getString("unit_preference", "metric")
         isMetric = unitValue == "metric"
 

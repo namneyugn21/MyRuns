@@ -1,73 +1,58 @@
-# MyRuns - Android Exercise Tracker
+# MyRuns
 
-MyRuns is a comprehensive Android application designed to help users track their physical activities. Whether manually logging a gym session or using GPS for a cross-country run, MyRuns provides a seamless experience for monitoring progress and history.
+Android app for tracking workouts. Log stuff manually, track runs with GPS, or let the phone figure out what you're doing on its own using the accelerometer.
 
-## 🚀 Features
+## Features
 
-### 1. Activity Tracking
-- **Manual Entry**: Log activities like Swimming, Cycling, or Yoga by entering duration, distance, and calories manually.
-- **GPS Tracking**: Real-time tracking of outdoor activities (Running, Walking, Hiking) with live map visualization using **Google Maps SDK**.
-- **Automatic Recognition**: Leverages on-device sensors (Accelerometer) and machine learning (Weka Classifier) to automatically detect whether you are Standing, Walking, or Running.
+**Activity tracking**
+- Manual entry for things like swimming, cycling, or yoga — duration, distance, calories
+- GPS tracking for runs, walks, and hikes, with a live map (Google Maps SDK)
+- Automatic activity recognition containing accelerometer data + a Weka classifier decide if you're standing, walking, or running
 
-### 2. History & Insights
-- **Exercise History**: A centralized list of all past activities, displaying key stats like distance, duration, and pace.
-- **Detailed View**: Revisit any past activity to see the specific path taken on the map or review manual notes.
-- **Statistics**: Automatic conversion between Metric (km) and Imperial (miles) units based on user preference.
+**History**
+- List of past activities with distance, duration, pace
+- Tap into any activity to see the route on a map or read your notes
+- Switches between metric and imperial depending on your settings
 
-### 3. User Personalization
-- **Profile Management**: Customize your user profile with name, email, phone number, and a profile picture (captured via Camera or Gallery).
-- **Settings**: Toggle privacy settings and manage unit preferences.
+**Profile**
+- Name, email, phone, profile picture (camera or gallery)
+- Unit preferences and privacy toggles
 
----
+## Architecture
 
-## 🛠️ Architecture & Tech Stack
+MVVM throughout.
 
-The project follows the **MVVM (Model-View-ViewModel)** architecture pattern to ensure a clean separation of concerns and maintainability.
+- Kotlin
+- XML layouts, Material 3
+- ViewPager2 + TabLayout for the main navigation
+- Room for local storage
+- Coroutines/Flow for async DB calls and location updates
+- Foreground service for tracking while backgrounded (Android 14+ compliant)
+- Custom FFT + Weka classifier for the sensor-based recognition
+- Google Maps Platform for the map view
 
-- **Language**: Kotlin
-- **UI Framework**: XML Layouts with Material Design 3 components.
-- **Navigation**: ViewPager2 with TabLayout for main screen navigation.
-- **Database**: **Room Persistence Library** for local data storage and offline access.
-- **Concurrency**: **Kotlin Coroutines** and **Flow** for asynchronous database operations and location updates.
-- **Background Processing**: **Foreground Services** for reliable activity tracking while the app is in the background (Android 14+ compliant).
-- **ML/Signal Processing**: Custom FFT implementation and Weka Classifier for sensor-based activity recognition.
-- **API**: Google Maps Platform for location visualization.
+## Screenshots
 
----
+| Start | History | Profile |
+|---|---|---|
+| _placeholder_ | _placeholder_ | _placeholder_ |
 
-## 📸 Screenshots
+## Setup
 
-| Start Screen | History | Profile |
-| :---: | :---: | :---: |
-| ![Start](/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png) | ![History](/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png) | ![Profile](/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png) |
-*(Note: Placeholder icons used. Replace with actual screenshots in the root directory)*
-
----
-
-## ⚙️ Setup & Installation
-
-### Prerequisites
-- Android Studio Ladybug (or newer)
-- Android SDK 35
-- Google Maps API Key
-
-### Configuration
-1. **Clone the repository**:
+1. Clone the repo:
    ```bash
    git clone https://github.com/yourusername/MyRuns.git
    ```
-2. **Add API Key**:
-   Create a `local.properties` file in the root directory and add your Google Maps API key:
+2. Add your Maps API key — create `local.properties` in the root and add:
    ```properties
    MAPS_API_KEY=YOUR_API_KEY_HERE
    ```
-3. **Build & Run**:
-   Open the project in Android Studio, sync Gradle, and run on an emulator or physical device.
+3. Open in Android Studio, sync Gradle, run on an emulator or device.
 
----
+Needs Android Studio Ladybug or newer, SDK 35.
 
-## 👨‍💻 Developer
-**Nam Nguyen**
+## Author
 
----
-*Developed as part of the Android Development curriculum.*
+Nam Nguyen
+
+Built for an Android development course.
